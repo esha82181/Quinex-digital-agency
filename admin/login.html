@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Quinex</title>
+ 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ 
+  <!-- Reuses the main site's design tokens (colors, fonts, buttons) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+ 
+  <div class="admin-login-box">
+    <div class="admin-login-logo">
+      <img src="../assets/logos/logo.png" alt="Quinex logo">
+      <span>QUINEX <small>ADMIN</small></span>
+    </div>
+ 
+    <h1 class="admin-login-title">Admin Login</h1>
+    <p class="admin-login-sub">Sign in to manage quote requests.</p>
+ 
+    <form id="adminLoginForm" class="admin-form">
+      <div class="admin-field">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required autocomplete="username">
+      </div>
+ 
+      <div class="admin-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
+      </div>
+ 
+      <p class="admin-error" id="loginError"></p>
+ 
+      <button type="submit" class="btn btn-gradient admin-submit" id="loginBtn">
+        <span class="btn-label">Log In</span>
+        <span class="btn-spinner" aria-hidden="true"></span>
+      </button>
+    </form>
+  </div>
+ 
+  <script src="js/admin-login.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Quinex</title>
+ 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ 
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body admin-dashboard-body">
+ 
+  <!-- ===== ADMIN TOP BAR ===== -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-logo">
+        <img src="../assets/logos/logo.png" alt="Quinex logo">
+        <span>QUINEX <small>ADMIN</small></span>
+      </div>
+      <button id="logoutBtn" class="btn btn-outline admin-logout-btn">
+        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+      </button>
+    </div>
+  </header>
+ 
+  <main class="admin-main">
+ 
+    <!-- ===== STAT CARDS ===== -->
+    <section class="admin-stats">
+      <div class="admin-stat-card">
+        <span class="admin-stat-label">Total Requests</span>
+        <span class="admin-stat-value" id="statTotal">0</span>
+      </div>
+      <div class="admin-stat-card">
+        <span class="admin-stat-label">New</span>
+        <span class="admin-stat-value" id="statNew">0</span>
+      </div>
+      <div class="admin-stat-card">
+        <span class="admin-stat-label">Contacted</span>
+        <span class="admin-stat-value" id="statContacted">0</span>
+      </div>
+      <div class="admin-stat-card">
+        <span class="admin-stat-label">In Progress</span>
+        <span class="admin-stat-value" id="statInProgress">0</span>
+      </div>
+      <div class="admin-stat-card">
+        <span class="admin-stat-label">Completed</span>
+        <span class="admin-stat-value" id="statCompleted">0</span>
+      </div>
+    </section>
+ 
+    <!-- ===== REQUESTS TABLE ===== -->
+    <section class="admin-table-section">
+      <h2 class="admin-section-title">Quote Requests</h2>
+ 
+      <p class="admin-loading" id="tableLoading">Loading requests...</p>
+      <p class="admin-empty" id="tableEmpty">No quote requests yet.</p>
+ 
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="quotesTable" style="display:none;">
+          <thead>
+            <tr>
+              <th>Client Name</th>
+              <th>Email</th>
+              <th>Service</th>
+              <th>Budget</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="quotesTableBody">
+            <!-- Rows injected by admin-dashboard.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+ 
+  <!-- ===== DETAIL MODAL ===== -->
+  <div class="admin-modal" id="detailModal">
+    <div class="admin-modal-box">
+      <button class="admin-modal-close" id="closeModal" aria-label="Close">&times;</button>
+      <h3 class="admin-modal-title">Request Details</h3>
+      <div id="modalBody" class="admin-modal-body"></div>
+    </div>
+  </div>
+ 
+  <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

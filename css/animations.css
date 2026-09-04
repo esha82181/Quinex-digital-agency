@@ -1,0 +1,314 @@
+/* =========================================================
+   QUINEX — ANIMATIONS STYLESHEET
+   Controls: hover micro-interactions, glow pulses,
+             floating motion, page-load reveals
+   Sections covered so far: Navbar, Hero
+   ========================================================= */
+
+/* ---------- BUTTON HOVER EFFECTS ---------- */
+.btn-gradient:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.55);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+/* ---------- HAMBURGER ICON MORPH (turns into an X) ---------- */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- GLOW RING SLOW ROTATION ---------- */
+@keyframes ringSpin {
+  from { transform: rotate(-16deg); }
+  to   { transform: rotate(344deg); }
+}
+
+@keyframes ringSpinReverse {
+  from { transform: rotate(22deg); }
+  to   { transform: rotate(-338deg); }
+}
+
+/* transform-box: fill-box makes the SVG ellipse rotate around its own center,
+   not the SVG canvas's 0,0 corner */
+.rings-svg .ring-purple {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ringSpin 24s linear infinite;
+}
+
+.rings-svg .ring-blue {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ringSpinReverse 28s linear infinite;
+}
+
+/* ---------- FLOATING CARDS GENTLE FLOAT ---------- */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.card-growth { animation: floatCard 4.5s ease-in-out infinite; }
+.card-code   { animation: floatCard 5.2s ease-in-out infinite 0.4s; }
+.card-play   { animation: floatCard 4s ease-in-out infinite 0.2s; }
+.card-projects { animation: floatCard 5s ease-in-out infinite 0.6s; }
+
+.floating-card:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  transform: translateY(-4px) scale(1.03);
+}
+
+/* ---------- LAPTOP SCREEN GLOW PULSE ---------- */
+@keyframes screenGlow {
+  0%, 100% { box-shadow: 0 0 60px rgba(124, 58, 237, 0.25); }
+  50% { box-shadow: 0 0 85px rgba(59, 130, 246, 0.4); }
+}
+
+.screen {
+  animation: screenGlow 4s ease-in-out infinite;
+}
+
+/* ---------- HERO CONTENT LOAD-IN (fades up on page load) ---------- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  animation: fadeUp 0.7s ease forwards;
+  opacity: 0;
+}
+.hero-title {
+  animation: fadeUp 0.7s ease forwards 0.12s;
+  opacity: 0;
+}
+.hero-desc {
+  animation: fadeUp 0.7s ease forwards 0.24s;
+  opacity: 0;
+}
+.hero-buttons {
+  animation: fadeUp 0.7s ease forwards 0.36s;
+  opacity: 0;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+/* ---------- SERVICE & PORTFOLIO CARD HOVER ---------- */
+.service-card:hover,
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.22);
+}
+
+.service-card:hover .service-icon,
+.portfolio-card:hover .portfolio-icon {
+  background: var(--gradient-brand);
+  color: #fff;
+  border-color: transparent;
+}
+
+.service-card:hover .service-arrow,
+.portfolio-card:hover .portfolio-arrow {
+  background: var(--gradient-brand);
+  color: #fff;
+  border-color: transparent;
+  transform: translateX(3px);
+}
+/* ---------- PROCESS ICON HOVER ---------- */
+.process-icon-wrap:hover {
+  background: var(--gradient-brand);
+  color: #fff;
+  transform: scale(1.06);
+}
+/* ---------- FOOTER SOCIAL ICON HOVER ---------- */
+.footer-social-icon:hover {
+  background: var(--gradient-brand);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-3px);
+}
+
+/* ---------- CTA SPARKLES GENTLE TWINKLE ---------- */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.cta-sparkles circle {
+  animation: twinkle 2.5s ease-in-out infinite;
+}
+
+.cta-sparkles circle:nth-child(2n) {
+  animation-delay: 0.6s;
+}
+
+.cta-sparkles circle:nth-child(3n) {
+  animation-delay: 1.2s;
+}
+
+/* ---------- ABOUT PAGE: LOGO SHOWCASE ANIMATIONS ---------- */
+
+/* Gentle up-down float for the logo itself */
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.showcase-logo {
+  animation: logoFloat 4s ease-in-out infinite;
+}
+
+/* Slow rotating glow rings around the logo */
+@keyframes ringRotateA {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes ringRotateB {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+.ring-a {
+  animation: ringRotateA 18s linear infinite;
+}
+
+.ring-b {
+  animation: ringRotateB 22s linear infinite;
+}
+
+/* Breathing glow pulse on the pedestal light */
+@keyframes pedestalPulse {
+  0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+}
+
+.logo-pedestal {
+  animation: pedestalPulse 3.5s ease-in-out infinite;
+}
+/* ---------- VALUE CARD HOVER ---------- */
+.value-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.2);
+}
+
+.value-card:hover .value-icon {
+  background: var(--gradient-brand);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ---------- TEAM CARD HOVER ---------- */
+.team-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.18);
+}
+
+.team-card:hover .team-avatar {
+  transform: scale(1.06);
+}
+
+.team-avatar {
+  transition: transform 0.4s ease;
+}
+
+.team-linkedin:hover {
+  background: var(--gradient-brand);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+/* ---------- CONTACT INFO CARD HOVER ---------- */
+.contact-info-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 14px 34px rgba(124, 58, 237, 0.18);
+}
+
+.contact-info-card:hover .contact-info-icon {
+  background: var(--gradient-brand);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ---------- FAQ QUESTION HOVER ---------- */
+.faq-question:hover .faq-toggle {
+  border-color: rgba(168, 85, 247, 0.6);
+}
+/* ---------- TEAM MEMBER CARD HOVER ---------- */
+.member-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.18);
+}
+
+.member-card:hover .member-photo {
+  transform: scale(1.06);
+}
+/* ---------- PRICING CARD HOVER ---------- */
+.pricing-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 20px 50px rgba(124, 58, 237, 0.22);
+}
+
+.pricing-card-popular:hover {
+  transform: translateY(-10px);
+}
+
+/* ---------- BENEFIT ICON HOVER ---------- */
+.benefit-item:hover .benefit-icon {
+  background: var(--gradient-brand);
+  color: #fff;
+  border-color: transparent;
+}
+/* ---------- PORTFOLIO WORK CARD HOVER ---------- */
+.work-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.18);
+}
+
+.work-card:hover .work-link {
+  gap: 10px;
+}
+
+/* ---------- FILTER BUTTON HOVER ---------- */
+.filter-btn:not(.is-active):hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #fff;
+}
+
+/* ---------- STRIP ICON HOVER ---------- */
+.strip-step:hover .strip-icon {
+  background: var(--gradient-brand);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ---------- DECORATIVE DIAMONDS: gentle float ---------- */
+.deco-diamond {
+  animation: floatCard 5s ease-in-out infinite;
+}
+.deco-2 { animation-delay: 0.5s; }
+.deco-3 { animation-delay: 1s; }
