@@ -47,6 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+    /* ---------- DROPDOWN PLACEHOLDER COLOR (Contact form selects) ---------- */
+  document.querySelectorAll('.form-field select').forEach((select) => {
+    const updateColor = () => {
+      select.classList.toggle('has-value', select.value !== '');
+    };
+    updateColor(); // set correct color on page load
+    select.addEventListener('change', updateColor);
+  });
 
     /* ---------- CONTACT FORM: real backend submission ---------- */
   const contactForm = document.getElementById('contactForm');
